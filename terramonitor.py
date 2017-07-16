@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 def main():
 	logging.info('terramonitor starting')
 
-	sleep_time_secs = 5
+	sleep_time_secs = 60
 
 	previous_game = None
 	previous_player = None
@@ -71,10 +71,10 @@ def main():
 			logging.error('no action required but game not aborted or finished')
 			continue
 
-		faction = action_required[0]['faction']
+		faction = None
 		player = None
-		if faction is not None:
-			player = get_player_name(game_json, faction)
+		if 'faction' in action_required[0]:
+			player = get_player_name(game_json, action_required[0]['faction'])
 
 		for item in action_required:
 			if item['type'] == 'full':
