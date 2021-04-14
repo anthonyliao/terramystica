@@ -71,7 +71,6 @@ def main():
 			logging.error('no action required but game not aborted or finished')
 			continue
 
-		faction = None
 		player = None
 		if 'faction' in action_required[0]:
 			player = get_player_name(game_json, action_required[0]['faction'])
